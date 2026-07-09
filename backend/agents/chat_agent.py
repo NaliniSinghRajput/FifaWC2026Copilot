@@ -10,6 +10,7 @@ class ChatAgent:
         self.knowledge_base = []
         self._build_knowledge_base()
         self._init_gemini()
+        self.query_cache = {}
 
     def _init_gemini(self):
         """Initializes Gemini API using the official google-genai SDK."""
@@ -134,6 +135,10 @@ class ChatAgent:
 
     def answer_query(self, query, ticket_context=None):
         """Generative RAG Q&A using the Gemini API."""
+        cache_key = f"{query}_{ticket_context.get('role') if ticket_context else ''}"
+        if cache_key in self.query_cache:
+            return self.query_cache[cache_key]
+
         if not self.client:
             # Try to initialize again just in case the key was set post-launch
             self._init_gemini()
@@ -182,16 +187,18 @@ class ChatAgent:
                     }
                 )
             
-            return {
+            res = {
                 "answer": response.text,
                 "sources": list(set([d["source"] for d in retrieved_docs])),
                 "ai_generated": True
             }
+            self.query_cache[cache_key] = res
+            return res
         except Exception as e_fallback:
             print(f"All GenAI models unavailable ({e_fallback}). Falling back to local RAG extraction.")
             
             if not retrieved_docs:
-                return {
+                res = {
                     "answer": (
                         "⚠️ *[Local Grounded Fallback Mode]* Google's AI servers are currently experiencing high demand. "
                         "I couldn't find a direct keyword match in our local stadium databases for your question. "
@@ -200,10 +207,12 @@ class ChatAgent:
                     "sources": ["Local Database Fallback"],
                     "ai_generated": False
                 }
+                self.query_cache[cache_key] = res
+                return res
             
             # Format the matched RAG documents nicely
             facts_list = []
-            for score, doc in retrieved_docs[:3]: # top 3 facts
+            for doc in retrieved_docs[:3]: # top 3 facts
                 facts_list.append(f"• **{doc['source']}**: {doc['text']}")
             
             answer_text = (
@@ -212,8 +221,10 @@ class ChatAgent:
                 + "\n".join(facts_list) + "\n\n"
                 "*(Please try again in a few moments to connect back to the Cloud GenAI model!)*"
             )
-            return {
+            res = {
                 "answer": answer_text,
                 "sources": list(set([d["source"] for d in retrieved_docs])),
                 "ai_generated": False
             }
+            self.query_cache[cache_key] = res
+            return res
