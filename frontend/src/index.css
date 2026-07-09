@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  --color-fifa-blue: #002F6C;
+  --color-fifa-red: #E10600;
+  --color-fifa-gold: #FFD700;
+  --color-fifa-dark: #0B132B;
+  --color-fifa-light: #F4F7F6;
+}
+
+:root {
+  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+/* Cinematic Goal Kick Animations */
+.stadium-net {
+  transform-origin: 30px 200px;
+  animation: net-shake 6s infinite ease-in-out;
+}
+.stadium-player {
+  transform-origin: 700px 330px;
+  animation: player-motion 6s infinite cubic-bezier(0.4, 0, 0.2, 1);
+}
+.player-arms {
+  transform-origin: 700px 290px;
+  animation: arms-cheer 6s infinite ease-in-out;
+}
+.stadium-ball {
+  transform-origin: 670px 335px;
+  animation: ball-motion 6s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes net-shake {
+  0%, 39%, 45%, 100% { transform: scaleX(1) translate(0, 0); }
+  40% { transform: scaleX(0.92) translate(-6px, 2px); }
+  41% { transform: scaleX(1.05) translate(4px, -1px); }
+  42% { transform: scaleX(0.97) translate(-2px, 1px); }
+  43% { transform: scaleX(1.02) translate(1px, 0); }
+  44% { transform: scaleX(0.99) translate(-0.5px, 0); }
+}
+
+@keyframes player-motion {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-30px, -5px); }
+  25% { transform: translate(-45px, 0); }
+  40% { transform: translate(-45px, 0); }
+  46% { transform: translate(-45px, -55px); }
+  60% { transform: translate(-45px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes arms-cheer {
+  0%, 40%, 100% { transform: rotate(0deg); }
+  46%, 70% { transform: rotate(-130deg); }
+}
+
+@keyframes ball-motion {
+  0% { transform: translate(0, 0) scale(1); opacity: 0; }
+  18% { opacity: 0; }
+  20% { transform: translate(-30px, -5px) scale(1); opacity: 1; }
+  25% { transform: translate(-45px, 0) scale(1); }
+  40% { transform: translate(-615px, -65px) scale(0.65); }
+  42% { transform: translate(-622px, 15px) scale(0.65); }
+  45% { transform: translate(-615px, 18px) scale(0.65); opacity: 1; }
+  48%, 100% { opacity: 0; }
+}

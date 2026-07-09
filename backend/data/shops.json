@@ -1,0 +1,91 @@
+{
+  "shops": [
+    {
+      "id": "shop_1",
+      "name": "Jersey Shore Eats",
+      "type": "Food & Beverage",
+      "stadium_ids": ["metlife"],
+      "locations": [
+        { "gate": "Gate A", "section": "112", "coords": { "x": 48, "y": 28 } },
+        { "gate": "Gate C", "section": "134", "coords": { "x": 45, "y": 75 } }
+      ],
+      "sustainability_rating": 4.5,
+      "sustainability_note": "All containers are biodegradable; offers a 10% discount if you bring a reusable cup.",
+      "menu": [
+        { "item": "Philly Cheesesteak", "price": 14.50, "description": "Classic ribeye steak with melted cheese and onions on a roll." },
+        { "item": "Atlantic City Boardwalk Fries", "price": 7.00, "description": "Thick-cut fresh potatoes, double-fried and salted." },
+        { "item": "Local Craft Beer (IPA)", "price": 11.00, "description": "New Jersey local brewery IPA (served in aluminum cup)." },
+        { "item": "Fountain Soda", "price": 5.50, "description": "Coca-Cola products served in compostable paper cups." }
+      ]
+    },
+    {
+      "id": "shop_2",
+      "name": "Tacolandia",
+      "type": "Food & Beverage",
+      "stadium_ids": ["metlife", "sofi"],
+      "locations": [
+        { "gate": "Gate B", "section": "120", "coords": { "x": 78, "y": 42 } },
+        { "gate": "Entry 7", "section": "115", "coords": { "x": 72, "y": 48 } }
+      ],
+      "sustainability_rating": 5.0,
+      "sustainability_note": "Zero-single-use-plastic certified. Uses locally sourced organic ingredients.",
+      "menu": [
+        { "item": "Carne Asada Tacos (3x)", "price": 12.00, "description": "Grilled steak tacos served with fresh onions, cilantro, and lime." },
+        { "item": "Chipotle Chicken Quesadilla", "price": 11.50, "description": "Shredded chicken and melted Monterey Jack cheese in a corn tortilla." },
+        { "item": "Horchata Organic", "price": 6.00, "description": "Traditional sweet rice milk drink with cinnamon." }
+      ]
+    },
+    {
+      "id": "shop_3",
+      "name": "FIFA Official Store",
+      "type": "Merchandise",
+      "stadium_ids": ["metlife", "sofi"],
+      "locations": [
+        { "gate": "Gate A", "section": "114", "coords": { "x": 60, "y": 30 } },
+        { "gate": "Entry 1", "section": "205", "coords": { "x": 42, "y": 23 } }
+      ],
+      "sustainability_rating": 4.0,
+      "sustainability_note": "Bags made from 100% recycled marine plastic. Offers shirts made of organic cotton.",
+      "menu": [
+        { "item": "Official match ball", "price": 160.00, "description": "Adidas FIFA World Cup 2026 official match ball." },
+        { "item": "USA National Team Jersey", "price": 95.00, "description": "Official 2026 home jersey, made from recycled polyester." },
+        { "item": "Mexico National Team Jersey", "price": 95.00, "description": "Official 2026 home jersey, showcasing Aztec motifs." },
+        { "item": "World Cup 2026 Mascot Plush", "price": 25.00, "description": "Soft plush of the official mascot." }
+      ]
+    },
+    {
+      "id": "shop_4",
+      "name": "GreenHub Recycling & Points Kiosk",
+      "type": "Sustainability",
+      "stadium_ids": ["metlife", "sofi"],
+      "locations": [
+        { "gate": "Gate C", "section": "132", "coords": { "x": 52, "y": 82 } },
+        { "gate": "Entry 10", "section": "128", "coords": { "x": 52, "y": 77 } }
+      ],
+      "sustainability_rating": 5.0,
+      "sustainability_note": "The core of our sustainability initiatives. Deposit plastics to earn digital rewards.",
+      "menu": [
+        { "item": "Plastic Bottle Deposit", "price": 0.00, "description": "Scan your app ticket, deposit a bottle, and earn 10 Green Points!" },
+        { "item": "Alum-Can Deposit", "price": 0.00, "description": "Scan app, deposit aluminum cans, and earn 15 Green Points!" },
+        { "item": "Redeem: 100 Green Points", "price": 0.00, "description": "Get a free eco-friendly World Cup key ring." },
+        { "item": "Redeem: 250 Green Points", "price": 0.00, "description": "Get a 20% discount coupon for the Official Merchandise Store." }
+      ]
+    },
+    {
+      "id": "shop_5",
+      "name": "First Aid & Medical Station",
+      "type": "First Aid",
+      "stadium_ids": ["metlife", "sofi"],
+      "locations": [
+        { "gate": "Gate B", "section": "124", "coords": { "x": 72, "y": 58 } },
+        { "gate": "Entry 1", "section": "101", "coords": { "x": 48, "y": 23 } }
+      ],
+      "sustainability_rating": 5.0,
+      "sustainability_note": "Equipped with electric solar-charged responder carts.",
+      "menu": [
+        { "item": "Medical Consultation", "price": 0.00, "description": "Free support for heat stress, minor injuries, or medical emergencies." },
+        { "item": "Accessibility Cart Dispatch", "price": 0.00, "description": "Request a mobility cart to transport fans to their vehicle." }
+      ]
+    }
+  ]
+}

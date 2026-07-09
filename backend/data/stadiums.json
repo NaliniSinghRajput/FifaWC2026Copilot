@@ -1,0 +1,96 @@
+{
+  "stadiums": [
+    {
+      "id": "metlife",
+      "name": "MetLife Stadium",
+      "city": "East Rutherford, NJ / NY",
+      "capacity": 82500,
+      "address": "1 MetLife Stadium Dr, East Rutherford, NJ 07073",
+      "gates": [
+        {
+          "name": "Gate A (Verizon Gate)",
+          "coords": { "x": 35, "y": 15 },
+          "accessibility": "ADA Compliant, step-free access ramp, tactile paving",
+          "nearest_parking": "Lots F, G"
+        },
+        {
+          "name": "Gate B (Hasa Gate)",
+          "coords": { "x": 80, "y": 25 },
+          "accessibility": "Standard turnstiles, elevator access nearby",
+          "nearest_parking": "Lots E, D"
+        },
+        {
+          "name": "Gate C (Pepsi Gate)",
+          "coords": { "x": 65, "y": 85 },
+          "accessibility": "ADA Compliant, audio assistance, direct elevator to suites",
+          "nearest_parking": "Lots B, C"
+        },
+        {
+          "name": "Gate D (Bud Light Gate)",
+          "coords": { "x": 15, "y": 70 },
+          "accessibility": "Standard turnstiles, standard ramp access",
+          "nearest_parking": "Lots H, J"
+        }
+      ],
+      "sections": [
+        { "id": "112", "coords": { "x": 50, "y": 30 }, "nearest_gate": "Gate A", "level": "Lower Bowl" },
+        { "id": "114", "coords": { "x": 58, "y": 32 }, "nearest_gate": "Gate A", "level": "Lower Bowl" },
+        { "id": "120", "coords": { "x": 75, "y": 45 }, "nearest_gate": "Gate B", "level": "Lower Bowl" },
+        { "id": "124", "coords": { "x": 70, "y": 60 }, "nearest_gate": "Gate B", "level": "Lower Bowl" },
+        { "id": "132", "coords": { "x": 50, "y": 80 }, "nearest_gate": "Gate C", "level": "Lower Bowl" },
+        { "id": "134", "coords": { "x": 42, "y": 78 }, "nearest_gate": "Gate C", "level": "Lower Bowl" },
+        { "id": "140", "coords": { "x": 25, "y": 55 }, "nearest_gate": "Gate D", "level": "Lower Bowl" },
+        { "id": "212", "coords": { "x": 50, "y": 20 }, "nearest_gate": "Gate A", "level": "Mezzanine" },
+        { "id": "232", "coords": { "x": 50, "y": 90 }, "nearest_gate": "Gate C", "level": "Mezzanine" },
+        { "id": "312", "coords": { "x": 50, "y": 10 }, "nearest_gate": "Gate A", "level": "Upper Deck" },
+        { "id": "332", "coords": { "x": 50, "y": 98 }, "nearest_gate": "Gate C", "level": "Upper Deck" }
+      ],
+      "accessibility_services": {
+        "sensory_room": "Level 1, behind Section 118. Noise-cancelling headphones and dim lighting available.",
+        "wheelchair_rental": "Guest Services Booths at Sections 124 and 138.",
+        "assistive_listening": "FM assistive devices available at guest service kiosks."
+      }
+    },
+    {
+      "id": "sofi",
+      "name": "SoFi Stadium",
+      "city": "Los Angeles, CA",
+      "capacity": 70240,
+      "address": "1001 Stadium Dr, Inglewood, CA 90301",
+      "gates": [
+        {
+          "name": "Entry 1 (American Airlines Plaza)",
+          "coords": { "x": 20, "y": 30 },
+          "accessibility": "ADA compliant, escalators and elevators nearby",
+          "nearest_parking": "Blue Zone"
+        },
+        {
+          "name": "Entry 7 (Toyota Plaza)",
+          "coords": { "x": 80, "y": 70 },
+          "accessibility": "ADA Compliant, wheelchair assistance hub, ramps",
+          "nearest_parking": "Brown/Green Zone"
+        },
+        {
+          "name": "Entry 10",
+          "coords": { "x": 50, "y": 95 },
+          "accessibility": "Standard turnstiles, elevator to mezzanine levels",
+          "nearest_parking": "Purple Zone"
+        }
+      ],
+      "sections": [
+        { "id": "101", "coords": { "x": 50, "y": 25 }, "nearest_gate": "Entry 1", "level": "Lower Bowl" },
+        { "id": "115", "coords": { "x": 75, "y": 50 }, "nearest_gate": "Entry 7", "level": "Lower Bowl" },
+        { "id": "128", "coords": { "x": 50, "y": 75 }, "nearest_gate": "Entry 10", "level": "Lower Bowl" },
+        { "id": "205", "coords": { "x": 40, "y": 20 }, "nearest_gate": "Entry 1", "level": "Main Concourse" },
+        { "id": "230", "coords": { "x": 60, "y": 80 }, "nearest_gate": "Entry 7", "level": "Main Concourse" },
+        { "id": "301", "coords": { "x": 50, "y": 15 }, "nearest_gate": "Entry 1", "level": "Upper Deck" },
+        { "id": "328", "coords": { "x": 50, "y": 85 }, "nearest_gate": "Entry 10", "level": "Upper Deck" }
+      ],
+      "accessibility_services": {
+        "sensory_room": "Level 2, Concourse Section 212. Interactive tactile panels, soft seating.",
+        "wheelchair_rental": "Mobility services desk at the main entry gates.",
+        "assistive_listening": "Headsets available for loan at guest kiosks."
+      }
+    }
+  ]
+}

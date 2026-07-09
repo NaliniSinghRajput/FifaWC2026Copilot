@@ -1,0 +1,32 @@
+{
+  "sponsors": [
+    {
+      "name": "Coca-Cola",
+      "tier": "FIFA Partner",
+      "logo": "🥤",
+      "activation": "Coca-Cola Fan Zone outside Gate C. Enjoy interactive goalie challenges, custom photo booths, and ice-cold drinks in 100% plant-based bottles.",
+      "promo": "Scan the QR code at the Fan Zone to win a free Coca-Cola cup holder made of ocean plastics!"
+    },
+    {
+      "name": "Adidas",
+      "tier": "FIFA Partner",
+      "logo": "👟",
+      "activation": "Adidas Speed Academy outside Gate A. Test your kick velocity, experience virtual reality penalty shootouts against Alisson Becker, and check out historical World Cup match balls.",
+      "promo": "Complete the kick challenge to receive a 15% discount code for official Adidas gear."
+    },
+    {
+      "name": "Visa",
+      "tier": "FIFA Partner",
+      "logo": "💳",
+      "activation": "Visa Cashless Concourse. Visa is the preferred payment partner. Get priority lanes at all concessions when using contactless payments or Google/Apple Pay with a Visa card.",
+      "promo": "Get a $5 rebate on your first purchase of $30 or more at the official merchandise store using Visa."
+    },
+    {
+      "name": "Hyundai / Kia",
+      "tier": "FIFA Partner",
+      "logo": "🚗",
+      "activation": "Hyundai Goal of the Century display in American Airlines Plaza (SoFi). Check out the new electric vehicle lineup and participate in soccer-tennis tournaments.",
+      "promo": "Register at the booth to get free shuttle transport vouchers from the stadium parking lots to the entries."
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "tournament_stage": "Quarter-Finals",
+  "matches": [
+    {
+      "id": "58",
+      "stage": "Quarter-Finals",
+      "stadium_id": "metlife",
+      "date": "2026-07-10",
+      "time": "19:00 EST",
+      "home_team": {
+        "name": "USA",
+        "code": "USA",
+        "flag": "🇺🇸",
+        "rank": 11,
+        "coach": "Mauricio Pochettino",
+        "trivia": "This is the first time the USA has reached the World Cup Quarter-Finals on home soil since 1994.",
+        "roster": [
+          { "number": 1, "name": "Matt Turner", "position": "Goalkeeper", "club": "Crystal Palace", "fact": "Known as the Penalty Stopper; has saved 4 crucial penalties in national team colors.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/52/Matt_Turner_2021_%28cropped%29.jpg" },
+          { "number": 2, "name": "Sergiño Dest", "position": "Defender", "club": "PSV Eindhoven", "fact": "Famous for his attacking runs and incredible ball-dribbling skills as a right-back.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cb/Sergi%C3%B1o_Dest_2022_%28cropped%29.jpg" },
+          { "number": 3, "name": "Antonee Robinson", "position": "Defender", "club": "Fulham", "fact": "Nicknamed 'Jedi' due to his lifelong love for Star Wars; fastest sprinter in the squad.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/da/Antonee_Robinson_2022_%28cropped%29.jpg" },
+          { "number": 4, "name": "Tyler Adams", "position": "Midfielder", "club": "Bournemouth", "fact": "The heartbeat of the midfield; captained the team at Qatar 2022 at just 23 years old.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Tyler_Adams_2022_%28cropped%29.jpg" },
+          { "number": 8, "name": "Weston McKennie", "position": "Midfielder", "club": "Juventus", "fact": "Celebrates goals with a Harry Potter 'wand cast' gesture; loves ranch dressing.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/be/Weston_McKennie_2022_%28cropped%29.jpg" },
+          { "number": 10, "name": "Christian Pulisic", "position": "Forward", "club": "AC Milan", "fact": "Nicknamed 'Captain America'; scored the tournament's fastest goal in the 3rd minute of the Group Stage.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Christian_Pulisic_2023_%28cropped%29.jpg" },
+          { "number": 11, "name": "Brenden Aaronson", "position": "Midfielder", "club": "Leeds United", "fact": "Nicknamed the 'Medford Messi' because of his tireless work rate and agile pressing.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/41/Brenden_Aaronson_2022_%28cropped%29.jpg" },
+          { "number": 20, "name": "Folarin Balogun", "position": "Forward", "club": "Monaco", "fact": "Born in New York, raised in London; selected the USA over England and Nigeria.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Folarin_Balogun_USMNT_2023.jpg" }
+        ]
+      },
+      "away_team": {
+        "name": "Mexico",
+        "code": "MEX",
+        "flag": "🇲🇽",
+        "rank": 14,
+        "coach": "Javier Aguirre",
+        "trivia": "Mexico is competing in their record-tying 18th World Cup tournament, seeking their first ever semi-final berth.",
+        "roster": [
+          { "number": 1, "name": "Luis Malagón", "position": "Goalkeeper", "club": "Club América", "fact": "Known for his athletic reflexes; succeeded legend Guillermo Ochoa as Mexico's No. 1.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Luis_Malag%C3%B3n_2023.jpg" },
+          { "number": 3, "name": "César Montes", "position": "Defender", "club": "Al-Merrikh", "fact": "Towering center-back nicknamed 'El Cachorro' (The Pup); scored a famous overhead kick in domestic league.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/1a/C%C3%A9sar_Montes_2022_%28cropped%29.jpg" },
+          { "number": 4, "name": "Edson Álvarez", "position": "Midfielder", "club": "West Ham", "fact": "Nicknamed 'El Machín'; captain of the national team, known for defensive dominance.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Edson_%C3%81lvarez_2023_%28cropped%29.jpg" },
+          { "number": 15, "name": "Uriel Antuna", "position": "Midfielder", "club": "Tigres", "fact": "Extremely fast winger who once clocked a top speed of 35.7 km/h during a match.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Uriel_Antuna_2022_%28cropped%29.jpg" },
+          { "number": 9, "name": "Santiago Giménez", "position": "Forward", "club": "Feyenoord", "fact": "Nicknamed 'El Bebote'; born in Argentina but naturalized Mexican; Feyenoord's top scorer.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/30/Santiago_Gim%C3%A9nez_2023_%28cropped%29.jpg" },
+          { "number": 22, "name": "Hirving Lozano", "position": "Forward", "club": "San Diego FC", "fact": "World-famous 'Chucky'; scored the winning goal against Germany in the World Cup 2018.", "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/de/Hirving_Lozano_2018.jpg" }
+        ]
+      },
+      "path": {
+        "USA": [
+          { "stage": "Group B", "opponent": "Wales", "result": "Won 2-0" },
+          { "stage": "Group B", "opponent": "Iran", "result": "Won 3-1" },
+          { "stage": "Group B", "opponent": "England", "result": "Draw 1-1" },
+          { "stage": "Round of 16", "opponent": "Netherlands", "result": "Won 2-1 (AET)" }
+        ],
+        "MEX": [
+          { "stage": "Group C", "opponent": "Poland", "result": "Won 1-0" },
+          { "stage": "Group C", "opponent": "Saudi Arabia", "result": "Won 2-1" },
+          { "stage": "Group C", "opponent": "Argentina", "result": "Lost 0-2" },
+          { "stage": "Round of 16", "opponent": "Denmark", "result": "Won 1-0" }
+        ]
+      }
+    }
+  ]
+}

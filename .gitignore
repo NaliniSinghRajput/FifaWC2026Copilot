@@ -1,0 +1,26 @@
+# Dependency directories
+node_modules/
+
+# Production build outputs
+dist/
+
+# Environment files (contains private API keys)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python caches and virtual environments
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# IDE settings and system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
