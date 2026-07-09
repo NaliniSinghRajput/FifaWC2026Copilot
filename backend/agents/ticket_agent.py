@@ -3,37 +3,59 @@ import json
 import os
 from PyPDF2 import PdfReader
 from io import BytesIO
+from typing import Dict, Any, Tuple, Optional, List
 
 class TicketAgent:
-    def __init__(self, data_dir="backend/data"):
-        # Resolve paths relative to project root
-        self.data_dir = data_dir
-        
-    def load_stadium_and_match(self, match_id, stadium_id):
-        try:
-            with open(os.path.join(self.data_dir, "stadiums.json"), "r", encoding="utf-8") as f:
-                stadiums = json.load(f)["stadiums"]
-            with open(os.path.join(self.data_dir, "matches.json"), "r", encoding="utf-8") as f:
-                matches = json.load(f)["matches"]
-        except Exception:
-            stadiums = []
-            matches = []
+    """Agent responsible for parsing, scanning, and validating physical/digital ticket artifacts."""
+    
+    def __init__(self, data_dir: str = "backend/data") -> None:
+        """Initializes the TicketAgent, pre-caching stadium and match details to prevent disk I/O latency.
 
-        stadium_data = next((s for s in stadiums if s["id"] == stadium_id), None)
-        match_data = next((m for m in matches if m["id"] == match_id), None)
+        Args:
+            data_dir (str): Path to the database files directory.
+        """
+        self.data_dir = data_dir
+        self.stadiums_cache: List[Dict[str, Any]] = []
+        self.matches_cache: List[Dict[str, Any]] = []
+        self._load_cache()
+
+    def _load_cache(self) -> None:
+        """Helper method to load database files into memory cache at startup."""
+        try:
+            stadiums_path = os.path.join(self.data_dir, "stadiums.json")
+            if os.path.exists(stadiums_path):
+                with open(stadiums_path, "r", encoding="utf-8") as f:
+                    self.stadiums_cache = json.load(f).get("stadiums", [])
+
+            matches_path = os.path.join(self.data_dir, "matches.json")
+            if os.path.exists(matches_path):
+                with open(matches_path, "r", encoding="utf-8") as f:
+                    self.matches_cache = json.load(f).get("matches", [])
+        except Exception as e:
+            print(f"WARNING: TicketAgent cache loading failed: {e}")
+
+    def load_stadium_and_match(self, match_id: str, stadium_id: str) -> Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]:
+        """Looks up stadium and match details matching given identifiers from memory cache.
+
+        Args:
+            match_id (str): Target match identifier.
+            stadium_id (str): Target stadium identifier.
+
+        Returns:
+            Tuple[Optional[Dict[str, Any]], Optional[Dict[str, Any]]]: Retrieved stadium and match details.
+        """
+        stadium_data = next((s for s in self.stadiums_cache if s.get("id") == stadium_id), None)
+        match_data = next((m for m in self.matches_cache if m.get("id") == match_id), None)
         return stadium_data, match_data
 
-    def parse_ticket_text(self, text):
-        """
-        Parses text extracted from a digital ticket and extracts key parameters using Regex.
-        Matches formats like:
-        - Match: 58
-        - Stadium: MetLife Stadium
-        - Gate: Gate A
-        - Section: 112
-        - Row: F
-        - Seat: 12
-        - Role: Fan / Volunteer / Staff
+    def parse_ticket_text(self, text: str) -> Dict[str, Any]:
+        """Parses raw text extracted from a digital ticket and extracts parameters using Regex patterns.
+
+        Args:
+            text (str): Raw text content to scan.
+
+        Returns:
+            Dict[str, Any]: Structured dictionary containing role, gate, seat details, and validation flag.
         """
         # Look for Match ID
         match_match = re.search(r"Match[:\s]+(\d+)", text, re.IGNORECASE)
@@ -79,9 +101,9 @@ class TicketAgent:
         # Normalize gate name
         gate_full_name = gate
         if stadium_data:
-            for g in stadium_data["gates"]:
-                if gate.lower() in g["name"].lower():
-                    gate_full_name = g["name"]
+            for g in stadium_data.get("gates", []):
+                if gate.lower() in g.get("name", "").lower():
+                    gate_full_name = g.get("name", "")
                     break
 
         return {
@@ -107,8 +129,15 @@ class TicketAgent:
             }
         }
 
-    def parse_pdf_ticket(self, file_bytes):
-        """Extracts text from uploaded PDF and parses it."""
+    def parse_pdf_ticket(self, file_bytes: bytes) -> Dict[str, Any]:
+        """Extracts text from raw bytes of an uploaded PDF ticket and parses parameters.
+
+        Args:
+            file_bytes (bytes): The raw uploaded file bytes.
+
+        Returns:
+            Dict[str, Any]: Structured ticket information dict.
+        """
         try:
             reader = PdfReader(BytesIO(file_bytes))
             text = ""
@@ -118,11 +147,16 @@ class TicketAgent:
         except Exception as e:
             return {"parsed": False, "error": f"Failed to parse PDF ticket: {str(e)}"}
 
-    def parse_image_ticket(self, filename, file_bytes):
-        """Mock image/QR code scanner. Parses simulated ticket text from metadata or binary check."""
-        # For our challenge, we can scan image names or content.
-        # If the file contains text patterns or name metadata matches, we extract it.
-        # Fall back to parsed text.
+    def parse_image_ticket(self, filename: str, file_bytes: bytes) -> Dict[str, Any]:
+        """Simulates image / QR scanner OCR processing using metadata file matches.
+
+        Args:
+            filename (str): Name of uploaded file used for mock triggers.
+            file_bytes (bytes): The raw file bytes.
+
+        Returns:
+            Dict[str, Any]: Structured ticket details.
+        """
         try:
             # We mock the OCR extraction by looking at the filename or returning a default
             text_simulation = "Match: 58\nStadium: MetLife Stadium\nGate: Gate A\nSection: 112\nRow: F\nSeat: 12\nRole: Fan"
