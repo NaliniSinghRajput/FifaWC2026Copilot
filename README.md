@@ -8,16 +8,7 @@ This repository showcases a complete full-stack solution featuring a **FastAPI b
 
 ## 🤖 Co-Engineered with Antigravity (Advanced Agentic AI)
 
-This project was built, refactored, and optimized through a collaborative pair-programming partnership with **Antigravity**, a state-of-the-art agentic AI coding assistant from Google DeepMind. 
-
-### How Antigravity Co-Authored this Prototype:
-*   **Rapid Prototyping:** Generated the core modular layouts, Python server architectures, and React page tab routings in record time.
-*   **Intelligent Refactoring:** Upgraded the seat map in `NavGuide.jsx` to a widescreen landscape blueprint outlining VIP boxes and step-free accessibility pathways.
-*   **Dynamic Backgrounds:** Crafted the full-screen cinematic goal-kick loop on the landing homepage using responsive CSS-keyframed SVG overlays.
-*   **Asset Processing:** Programmed a Python Pillow script to programmatically strip fake transparent checkerboards from sponsor logo assets and configured dark-mode inverting CSS classes.
-*   **Real-world Resilience:** Designed and coded the **Three-Tier Fallback Cascade** (Gemini 3.5 ➔ Gemini 2.0 ➔ Local RAG) to guarantee 100% chatbot uptime under severe cloud rate limits.
-*   **JS Loader v2 Migration:** Diagnosed and hot-fixed script reloader crashes in the Google Maps tab by migrating the loader code to the modern `v2.x` functional API.
-
+This project was built, refactored, and optimized through a collaborative pair-programming partnership with **Antigravity**, an agentic AI coding assistant from Google DeepMind. 
 ---
 
 ## 🚀 Key Features
