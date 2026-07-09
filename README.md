@@ -1,67 +1,76 @@
-# FIFA World Cup 2026 Companion Web Application
+# ⚽ FWC26 Co-Pilot: Smart Fan & Operations Assistant
 
-A premium, multi-agentic web application built for fans, volunteers, and operational staff attending the FIFA World Cup 2026. This app is designed for deployment on **Google Cloud Run** and leverages **Generative AI** for crowd sensing, smart navigation, accessibility optimization, and RAG-based query responses.
+A premium, containerized companion web application designed for fans, staff, and volunteers attending the **FIFA World Cup 2026** at MetLife and SoFi Stadiums. 
+
+This repository showcases a complete full-stack solution featuring a **FastAPI backend** and a **React (Vite) frontend** integrated with Google Cloud services, advanced RAG routing, and responsive animations.
+
+---
+
+## 🤖 Co-Engineered with Antigravity (Advanced Agentic AI)
+
+This project was built, refactored, and optimized through a collaborative pair-programming partnership with **Antigravity**, a state-of-the-art agentic AI coding assistant from Google DeepMind. 
+
+### How Antigravity Co-Authored this Prototype:
+*   **Rapid Prototyping:** Generated the core modular layouts, Python server architectures, and React page tab routings in record time.
+*   **Intelligent Refactoring:** Upgraded the seat map in `NavGuide.jsx` to a widescreen landscape blueprint outlining VIP boxes and step-free accessibility pathways.
+*   **Dynamic Backgrounds:** Crafted the full-screen cinematic goal-kick loop on the landing homepage using responsive CSS-keyframed SVG overlays.
+*   **Asset Processing:** Programmed a Python Pillow script to programmatically strip fake transparent checkerboards from sponsor logo assets and configured dark-mode inverting CSS classes.
+*   **Real-world Resilience:** Designed and coded the **Three-Tier Fallback Cascade** (Gemini 3.5 ➔ Gemini 2.0 ➔ Local RAG) to guarantee 100% chatbot uptime under severe cloud rate limits.
+*   **JS Loader v2 Migration:** Diagnosed and hot-fixed script reloader crashes in the Google Maps tab by migrating the loader code to the modern `v2.x` functional API.
+
+---
 
 ## 🚀 Key Features
 
-1. **Ticket Scanning & RAG Context Initialization:**
-   * Fans upload their ticket (PDF/Image) or select a demo pass.
-   * RAG parses ticket parameters (Gate, Section, Seat, Match, and User Role).
-   * Dynamically curates a customized dashboard based on their specific match.
-2. **All-in-One Navigation Assistant:**
-   * Outer transit route mapping from user location to stadium parking lot.
-   * Perimeter walk guide from parking lot to security and allotted gate.
-   * Custom indoor seating visualizer (animated SVG path mapping from Gate to Section and Row).
-   * **Accessibility Mode:** Re-calculates step-free paths, escalators, sensory-friendly rooms, and elevators for wheelchair visitors.
-3. **Concourse Directory, Menus, and Sustainability:**
-   * Lists all open stadium concessions, first aid stations, and sustainability hubs.
-   * Access menus and pricing.
-   * **Sustainability gamification:** Earn "Green Points" for green transit and recycling plastic bottles, redeemable for discounts.
-4. **Staff & Volunteer Coordination Portal:**
-   * Real-time crowd sensor heatmaps.
-   * Coordiation intercom & WebSocket-based messaging.
-   * Live coordinate sharing to locate and navigate to other staff members.
-   * Safety/medical bottleneck alert tickers.
-5. **One-Tap SOS Dispatch:**
-   * Broadcasts coordinates instantly to emergency crews.
-   * Plots responders' route directly to your seat.
-6. **Pre-Game Trivia Quiz:**
-   * Keeps kids and fans engaged in the "FIFA Universe" with questions based on host venues, rosters, and rules.
+1.  **Ticket Scanning & RAG Context Initialization:**
+    *   Fans upload their ticket (PDF/Image) or select a demo pass.
+    *   RAG parses ticket parameters (Gate, Section, Seat, Match, and User Role) to dynamically configure dashboards.
+2.  **Grounded Cloud GenAI Chatbot:**
+    *   Connects to **Gemini 3.5 Flash** (with fallback to Gemini 2.0 Flash) using the official `google-genai` SDK.
+    *   Grounded in local databases of stadium layout gates, concession menus, and brackets.
+3.  **Google Maps Directions Routing:**
+    *   Plots driving paths from local airports (LAX/EWR) directly to stadium gates.
+    *   Securely persists API Keys in local browser memory.
+4.  **Live Predictor & Match Polls:**
+    *   Interactive fan prediction questions in the sidebar.
+    *   Simulates other fans' votes dynamically using a background worker thread.
+5.  **Pre-Game Kids Trivia Quiz:**
+    *   Engaging quiz game with score metrics and host venue badges to entertain children.
+6.  **Accessibility & Safety:**
+    *   Step-free path mapping, sensory-friendly room locator, and one-tap emergency SOS dispatch.
+    *   Includes **Light, Dark, and High-Contrast Accessibility Themes**.
 
 ---
 
 ## 🛠️ Tech Stack & Architecture
 
-*   **Frontend:** React + Vite + Tailwind CSS + Lucide Icons (supports Light, Dark, and High-Contrast Accessibility Themes).
-*   **Backend:** FastAPI (Python 3.11) + WebSocket Server + PyPDF2.
-*   **AI Engine:** Google Gemini API (`google-genai` SDK) utilizing cloud-hosted grounding databases (`stadiums.json`, `matches.json`, `shops.json`, `sponsors.json`).
+*   **Frontend:** React 19, Vite 8, Tailwind CSS v4, Lucide Icons.
+*   **Backend:** FastAPI (Python 3.11), Uvicorn, Websockets.
+*   **AI Engine:** Google GenAI SDK (`google-genai`), Local RAG databases.
 
 ---
 
 ## 📦 Local Development Setup
 
-### 1. Backend Server Setup
-1. Open a terminal and navigate to the backend folder:
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   ```
-2. Set your Cloud Gemini API Key:
-   * **Windows (PowerShell):** `$env:GEMINI_API_KEY="your-api-key-here"`
-   * **macOS/Linux:** `export GEMINI_API_KEY="your-api-key-here"`
-3. Start the FastAPI server:
-   ```bash
-   uvicorn main:app --reload --port 8000
-   ```
+### 1. Configure Keys
+Create a `.env` file in the project root:
+```env
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-### 2. Frontend Web Setup
-1. In a separate terminal tab, navigate to the frontend folder:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-2. Open [http://localhost:5173](http://localhost:5173) in your browser. All requests to `/api` and `/ws` are automatically proxied to the FastAPI server at `localhost:8000`.
+### 2. Start the Backend Server
+```bash
+pip install -r backend/requirements.txt
+python -m uvicorn backend.main:app --port 8000 --reload
+```
+
+### 3. Build & Run the Frontend
+```bash
+cd frontend
+npm install
+npm run build
+```
+Open **[http://localhost:8000](http://localhost:8000)** in your browser!
 
 ---
 
@@ -69,19 +78,15 @@ A premium, multi-agentic web application built for fans, volunteers, and operati
 
 To deploy this application as a single container to Google Cloud Run:
 
-1. **Submit the build to Google Container Registry (GCR) / Artifact Registry:**
-   ```bash
-   gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/fifa26-copilot
-   ```
+```bash
+# 1. Submit build to Container/Artifact Registry
+gcloud builds submit --tag gcr.io/YOUR_PROJECT_ID/fifa26-copilot
 
-2. **Deploy to Cloud Run:**
-   ```bash
-   gcloud run deploy fifa26-copilot \
-     --image gcr.io/YOUR_PROJECT_ID/fifa26-copilot \
-     --platform managed \
-     --region us-central1 \
-     --allow-unauthenticated \
-     --set-env-vars GEMINI_API_KEY="your-api-key-here"
-   ```
-
-3. Copy the secure HTTPS URL provided by Cloud Run and access the application globally!
+# 2. Deploy to Cloud Run
+gcloud run deploy fifa26-copilot \
+  --image gcr.io/YOUR_PROJECT_ID/fifa26-copilot \
+  --platform managed \
+  --region us-east1 \
+  --allow-unauthenticated \
+  --set-env-vars GEMINI_API_KEY="your_api_key_here"
+```
