@@ -4,7 +4,11 @@ import { Map, Compass, Navigation, AlertCircle } from 'lucide-react';
 
 export default function GoogleMapsPage({ userContext, getCardClass }) {
   const mapRef = useRef(null);
-  const [apiKey] = useState(import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '');
+  const [apiKey] = useState(
+    import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 
+    localStorage.getItem('google_maps_api_key') || 
+    ''
+  );
   const [mapError, setMapError] = useState('');
   const [origin, setOrigin] = useState(
     userContext.stadium_id === 'sofi' 
