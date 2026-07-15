@@ -4,12 +4,7 @@ import { Map, Compass, Navigation, AlertCircle } from 'lucide-react';
 
 export default function GoogleMapsPage({ userContext, getCardClass }) {
   const mapRef = useRef(null);
-  const [apiKey, setApiKey] = useState(
-    import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 
-    localStorage.getItem('google_maps_api_key') || 
-    ''
-  );
-  const [inputKey, setInputKey] = useState(apiKey);
+  const [apiKey] = useState(import.meta.env.VITE_GOOGLE_MAPS_API_KEY || '');
   const [mapError, setMapError] = useState('');
   const [origin, setOrigin] = useState(
     userContext.stadium_id === 'sofi' 
@@ -151,37 +146,16 @@ export default function GoogleMapsPage({ userContext, getCardClass }) {
             }`}
           ></div>
 
-          {/* Render error & credentials loader view only when key is missing or errored */}
+          {/* Render error & credentials warning view only when key is missing or errored */}
           {mapError && (
             <div className="flex-grow flex flex-col items-center justify-center p-8 bg-slate-950 rounded-xl border border-slate-800 text-center min-h-[450px]">
               <AlertCircle className="w-12 h-12 text-yellow-500 mb-3 animate-pulse" />
               <h3 className="font-bold text-sm text-slate-200">Google Maps Live Feed</h3>
-              <p className="text-xs text-zinc-500 max-w-sm mt-1 mb-6">
+              <p className="text-xs text-yellow-500 max-w-sm mt-1 mb-6">
                 {mapError}
               </p>
-              
-              <div className="flex flex-col gap-2 w-full max-w-xs">
-                <input
-                  type="text"
-                  value={inputKey}
-                  onChange={(e) => setInputKey(e.target.value)}
-                  placeholder="Paste Google Maps API Key here..."
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 text-xs text-white text-center focus:outline-none"
-                />
-                <button
-                  onClick={() => {
-                    if (inputKey) {
-                      localStorage.setItem('google_maps_api_key', inputKey);
-                      setApiKey(inputKey);
-                    }
-                  }}
-                  className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xs"
-                >
-                  Load Live Map
-                </button>
-              </div>
 
-              <div className="mt-8 border-t border-slate-900 pt-6 w-full max-w-md">
+              <div className="border-t border-slate-900 pt-6 w-full max-w-md">
                 <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider block mb-2">Simulated Route Summary</span>
                 <div className="bg-slate-900/60 p-3 rounded-lg border border-slate-800 text-left text-xs font-sans text-zinc-400 space-y-1">
                   <div><strong>From:</strong> {origin}</div>
