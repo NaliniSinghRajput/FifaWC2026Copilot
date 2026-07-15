@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, ShoppingBag, Leaf, MapPin, Compass, DollarSign } from 'lucide-react';
+import { Search, ShoppingBag, Leaf, MapPin, Compass } from 'lucide-react';
 
 export default function ShopList({ userContext, getCardClass }) {
   const [shops, setShops] = useState([]);

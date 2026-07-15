@@ -1,7 +1,7 @@
 import re
 import json
 import os
-from PyPDF2 import PdfReader
+from pypdf import PdfReader
 from io import BytesIO
 from typing import Dict, Any, Tuple, Optional, List
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Home, Calendar, MapPin, ShoppingBag, Award, ShieldAlert, LogOut, MessageSquare, HeartHandshake, User, Leaf, Map, BarChart3 } from 'lucide-react';
+import { Home, Calendar, MapPin, ShoppingBag, Award, ShieldAlert, LogOut, HeartHandshake, User, Leaf, Map, BarChart3, Info } from 'lucide-react';
 
 // Subcomponents to import/declare
 import ThemeToggle from '../components/ThemeToggle';

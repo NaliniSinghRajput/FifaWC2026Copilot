@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, X, ChevronUp, AlertCircle } from 'lucide-react';
+import { Send, Sparkles, X, AlertCircle } from 'lucide-react';
 
 const SUGGESTED_PROMPTS = [
   "How do I navigate to my seat?",
@@ -9,7 +9,7 @@ const SUGGESTED_PROMPTS = [
   "How can I get green points?"
 ];
 
-export default function ChatBot({ isOpen, onClose, userContext, getCardClass }) {
+export default function ChatBot({ isOpen, onClose, userContext }) {
   const [messages, setMessages] = useState([
     {
       id: 'welcome',

@@ -2,7 +2,7 @@ fastapi==0.111.0
 uvicorn==0.30.1
 pydantic>=2.7.4
 python-multipart==0.0.9
-PyPDF2==3.0.1
+pypdf>=6.0.0
 google-genai
 websockets>=13.0.0
 pytest==8.2.2
