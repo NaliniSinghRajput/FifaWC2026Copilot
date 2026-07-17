@@ -1,5 +1,7 @@
 # ⚽ FWC26 Co-Pilot: Smart Fan & Operations Assistant
 
+YouTube Link :- https://youtu.be/nty1EkHX75M?si=SKJvIO3JFz2rNkdU
+
 A premium, containerized companion web application designed for fans, staff, and volunteers attending the **FIFA World Cup 2026** at MetLife and SoFi Stadiums. 
 
 This repository showcases a complete full-stack solution featuring a **FastAPI backend** and a **React (Vite) frontend** integrated with Google Cloud services, advanced RAG routing, and responsive animations.
