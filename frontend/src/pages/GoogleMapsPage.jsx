@@ -4,11 +4,8 @@ import { Map, Compass, Navigation, AlertCircle } from 'lucide-react';
 
 export default function GoogleMapsPage({ userContext, getCardClass }) {
   const mapRef = useRef(null);
-  const [apiKey] = useState(
-    import.meta.env.VITE_GOOGLE_MAPS_API_KEY || 
-    localStorage.getItem('google_maps_api_key') || 
-    ''
-  );
+  const [apiKey, setApiKey] = useState('');
+  const [loadingKey, setLoadingKey] = useState(true);
   const [mapError, setMapError] = useState('');
   const [origin, setOrigin] = useState(
     userContext.stadium_id === 'sofi' 
@@ -25,8 +22,9 @@ export default function GoogleMapsPage({ userContext, getCardClass }) {
 
   const initGoogleMap = () => {
     try {
+      if (loadingKey) return;
       if (!apiKey) {
-        setMapError('Google Maps API Key is not set. Please paste your API Key below to load the live directions map.');
+        setMapError('Google Maps API Key is not set in backend environment variables. Please check the backend .env configuration.');
         return;
       }
 
@@ -101,8 +99,31 @@ export default function GoogleMapsPage({ userContext, getCardClass }) {
   };
 
   useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const res = await fetch('/api/config');
+        if (res.ok) {
+          const data = await res.json();
+          const key = data.google_maps_api_key || import.meta.env.VITE_GOOGLE_MAPS_API_KEY || localStorage.getItem('google_maps_api_key') || '';
+          setApiKey(key);
+        } else {
+          const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || localStorage.getItem('google_maps_api_key') || '';
+          setApiKey(key);
+        }
+      } catch (err) {
+        console.error("Failed to load maps config:", err);
+        const key = import.meta.env.VITE_GOOGLE_MAPS_API_KEY || localStorage.getItem('google_maps_api_key') || '';
+        setApiKey(key);
+      } finally {
+        setLoadingKey(false);
+      }
+    };
+    fetchConfig();
+  }, []);
+
+  useEffect(() => {
     initGoogleMap();
-  }, [origin, apiKey]);
+  }, [origin, apiKey, loadingKey]);
 
   const handleUpdateRoute = (e) => {
     e.preventDefault();

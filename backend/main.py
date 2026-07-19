@@ -71,6 +71,17 @@ def preload_static_data() -> None:
 preload_static_data()
 
 
+@app.get("/api/config", response_model=Dict[str, Any])
+async def get_config() -> Dict[str, Any]:
+    """Retrieves safe runtime public config variables including Google Maps API Key.
+
+    Returns:
+        Dict[str, Any]: Configuration dictionary.
+    """
+    maps_key = os.environ.get("VITE_GOOGLE_MAPS_API_KEY") or os.environ.get("GOOGLE_MAPS_API_KEY") or ""
+    return {"google_maps_api_key": maps_key}
+
+
 # --- Pydantic Request Models ---
 class MockLoginRequest(BaseModel):
     ticket_type: str  # "usa-mexico", "brazil-england", "volunteer", "staff-ada"

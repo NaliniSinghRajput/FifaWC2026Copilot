@@ -10,8 +10,6 @@ RUN npm ci
 
 # Copy frontend source and build assets
 COPY frontend/ ./
-ARG VITE_GOOGLE_MAPS_API_KEY
-ENV VITE_GOOGLE_MAPS_API_KEY=$VITE_GOOGLE_MAPS_API_KEY
 RUN npm run build
 
 # ==========================================

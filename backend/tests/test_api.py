@@ -88,3 +88,10 @@ def test_chatbot_fallback_RAG():
     data = response.json()
     assert "answer" in data
     assert "sources" in data
+
+
+def test_get_config():
+    response = client.get("/api/config")
+    assert response.status_code == 200
+    data = response.json()
+    assert "google_maps_api_key" in data
